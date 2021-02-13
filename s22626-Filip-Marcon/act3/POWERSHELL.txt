@@ -1,0 +1,31 @@
+Having fun using powershell.
+
+almost unistalled most of apps XD
+#cd HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+#ls | %{
+#    Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString
+#} | %{& $_.UninstallString}
+#
+
+found cool stuff in 
+cd hklm:\
+
+i can run notepad by '&'
+& C:\Windows\notepad.exe
+
+i've tested 
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:TEMP\$nazwaPliku
+
+
+Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
